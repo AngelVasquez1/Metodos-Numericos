@@ -1,4 +1,4 @@
-Falsa Posicion
+Metodo Falsa Posicion
 
 Aun cuando la bisección es una técnica perfectamente válida para determinar raíces, su método de aproximación por "fuerza bruta" es relativamente ineficiente. La falsa posición es una alternativa basada en una visualización gráfica.
 
