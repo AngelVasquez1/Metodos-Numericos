@@ -1,3 +1,5 @@
+Metodo Biseccion
+
 Este método consiste en obtener una mejor aproximación de la raíz a partir de un intervalo inicial (a,b) en el cual hay un cambio de signo en la función, es decir: f(a)f(b)<0.
 
 El método termina cuando se cumple con alguna condición de paro.
