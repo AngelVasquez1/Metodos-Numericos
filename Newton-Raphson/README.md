@@ -1,3 +1,5 @@
+Newton-Raphson
+
 El método de Newton-Raphson “es un método iterativo que nos permite aproximar la solución de una ecuación del tipo f(x) = 0. Partimos de una estimación inicial de la solución x0 y construimos una sucesión de aproximaciones de forma recurrente mediante la fórmula:
 
 xj+1 =xj − f(xj).
