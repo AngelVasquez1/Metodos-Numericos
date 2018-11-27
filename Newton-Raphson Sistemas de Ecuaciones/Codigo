@@ -1,0 +1,73 @@
+#Sistema a resolver
+# x**2 + xy = 10
+# y + 3xy**2 = 57
+
+####
+# Esta parte se debe cambiar y corresponde
+# Al sistema a resolver
+
+def u(x,y):
+    return (x**2) + (x*y) -10
+
+def v(x,y):
+    return y + (3*x*(y**2)) -57
+
+def dudx(x,y):
+    return 2*x + y
+
+def dudy(x,y):
+    return x
+
+def dvdx(x,y):
+    return 3*(y**2)
+
+def dvdy(x,y):
+    return 1 + 6*x*y
+
+###
+#Esta es la matriz Jacobiana
+# Corresponde a las derivadas parciales
+
+A = [[dudx, dudy],[dvdx, dvdy]]
+
+###
+# Esta es una matriz con las funciones originales
+
+D = [[u],[v]]
+
+####
+#Valores iniciales
+
+C = [[1.5],[3.5]]
+
+####
+# Error deseado
+
+E = 0.0001
+
+for i in range(100):
+    Am,An = getDimensiones(A)
+
+## Calcular D en el punto C
+    Di =createMatriz(Am,1,0)
+    for k in range(Am):
+        for j in range(1):
+            Di[k][j] = D[k][j](C[0][0],C[1][0])
+            Ai = createMatriz(Am,An,0)
+            for k in range(Am):
+                for j in range(An):
+                    Ai[k][j] = A[k][j](C[0][0],C[1][0])
+                    invAi = getMatrizInversa(Ai)
+                    Bi = restaMatrices(C,mulMatrices(invAi,Di))
+                    Ce = restaMatrices(C,Bi)
+    if abs(Ce[0][0]) < E and abs(Ce[1][0]) < E:
+        C = Bi
+    break
+
+C = Bi
+
+print("Los valores son",C)
+
+print("U", u(C[0][0],C[1][0]))
+
+print("v", v(C[0][0],C[1][0]))
